@@ -48,7 +48,12 @@ with col1:
 with col2:
     detail = st.selectbox("Environmental/Emotional Details", details)
     lighting = st.selectbox("Lighting Description", lightings)
-    emotion = st.selectbox("Emotion", emotions)
+    emotion = st.selectbox(
+                "Emotion",
+                emotions,
+                key='emotion_selectbox', # Use a different key for the selectbox itself
+                index=emotions.index(st.session_state.emotion) # Set the index based on the state value
+            )
     theme = st.selectbox("Theme", themes)
     style = st.selectbox("Style/Mood/Shot Type", styles)
 
@@ -102,12 +107,7 @@ def generate():
 
 
 # The selectbox, with its value controlled by the session state
-st.selectbox(
-    "Emotion",
-    emotions,
-    key='emotion_selectbox', # Use a different key for the selectbox itself
-    index=emotions.index(st.session_state.emotion) # Set the index based on the state value
-)
+
 
 # The button that triggers the randomization
 st.button("Randomize", on_click=randomize)
