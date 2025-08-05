@@ -136,7 +136,7 @@ def generate():
     result = generate_prompt()
     st.text_area("Generated Prompt", result, height=150)
     
-    image_url = get_pollinations_url(created_prompt)
+    image_url = get_pollinations_url(result)
     st.image(image_url)
 
 st.button("Randomize", on_click=randomize, use_container_width=True, type='secondary')
