@@ -61,33 +61,45 @@ def generate_prompt():
     prompt += f"Symbolizes {theme}. Style: {style}."
     return prompt
 
-def randomize():
-    subject = random.choice(subjects)
-    location = random.choice(locations)
-    action = random.choice(actions)
-    detail = random.choice(details)
-    lighting = random.choice(lightings)
-    emotion = random.choice(emotions)
-    theme = random.choice(themes)
-    style = random.choice(styles)
-
-# Buttons
-col_gen, col_rand = st.columns([1, 1])
-generate = col_gen.button("Generate Prompt")
-if col_rand.button("🎲 Randomize"):
-    randomize()
-
-
-if generate:
-    result = generate_prompt()
-    st.text_area("📝 Generated Prompt", result, height=150)
-
 if 'emotion' not in st.session_state:
     st.session_state.emotion = emotions[0] # Set a default value
-    
-# Function to be called when the button is clicked
-def randomize_emotion():
+if 'subject' not in st.session_state:
+    st.session_state.subject = subjects[0]  # Set a default value
+if 'location' not in st.session_state:
+    st.session_state.location = locations[0]  # Set a default value
+if 'action' not in st.session_state:
+    st.session_state.action = actions[0]  # Set a default value
+if 'detail' not in st.session_state:
+    st.session_state.detail = details[0]  # Set a default value
+if 'lighting' not in st.session_state:
+    st.session_state.lighting = lightings[0]  # Set a default value
+if 'theme' not in st.session_state:
+    st.session_state.theme = themes[0]  # Set a default value
+if 'style' not in st.session_state:
+    st.session_state.style = styles[0]  # Set a default value
+
+def randomize():
+    st.session_state.subject = random.choice(subjects)
+    st.session_state.location = random.choice(locations)
+    st.session_state.action = random.choice(actions)
+    st.session_state.detail = random.choice(details)
+    st.session_state.lighting = random.choice(lightings)
     st.session_state.emotion = random.choice(emotions)
+    st.session_state.theme = random.choice(themes)
+    st.session_state.style = random.choice(styles)
+
+def generate():
+    result = generate_prompt()
+    st.text_area("Generated Prompt", height=150)
+# # Buttons
+# col_gen, col_rand = st.columns([1, 1])
+# generate = col_gen.button("Generate Prompt")
+# random_ = col_rand.button("🎲 Randomize",)
+
+# if generate:
+#     result = generate_prompt()
+#     st.text_area("📝 Generated Prompt", result, height=150)
+
 
 # The selectbox, with its value controlled by the session state
 st.selectbox(
@@ -98,7 +110,5 @@ st.selectbox(
 )
 
 # The button that triggers the randomization
-st.button("Randomize", on_click=randomize_emotion)
-
-# You can display the current value for verification
-st.write("The current emotion is:", st.session_state.emotion)
+st.button("Randomize", on_click=randomize)
+st.button("Generate Prompt", on_click=generate)
