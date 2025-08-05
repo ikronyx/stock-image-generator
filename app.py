@@ -38,6 +38,23 @@ themes = ['Hope', 'Resilience', 'Mental Health', 'Climate Action', 'Unity', 'Reb
 styles = ['cinematic wide shot', 'soft focus portrait', 'high contrast black and white', 'minimalist composition',
           'natural light candid', 'documentary realism', 'aerial drone perspective', 'intimate close-up']
 
+if 'emotion' not in st.session_state:
+    st.session_state.emotion = emotions[0] # Set a default value
+if 'subject' not in st.session_state:
+    st.session_state.subject = subjects[0]  # Set a default value
+if 'location' not in st.session_state:
+    st.session_state.location = locations[0]  # Set a default value
+if 'action' not in st.session_state:
+    st.session_state.action = actions[0]  # Set a default value
+if 'detail' not in st.session_state:
+    st.session_state.detail = details[0]  # Set a default value
+if 'lighting' not in st.session_state:
+    st.session_state.lighting = lightings[0]  # Set a default value
+if 'theme' not in st.session_state:
+    st.session_state.theme = themes[0]  # Set a default value
+if 'style' not in st.session_state:
+    st.session_state.style = styles[0]  # Set a default value
+    
 # --- UI ---
 col1, col2 = st.columns(2)
 
@@ -101,23 +118,6 @@ def generate_prompt():
     prompt += f"surrounded by {detail}. Lighting is {lighting}, with color tones that evoke {st.session_state.emotion}. "
     prompt += f"Symbolizes {theme}. Style: {style}."
     return prompt
-
-if 'emotion' not in st.session_state:
-    st.session_state.emotion = emotions[0] # Set a default value
-if 'subject' not in st.session_state:
-    st.session_state.subject = subjects[0]  # Set a default value
-if 'location' not in st.session_state:
-    st.session_state.location = locations[0]  # Set a default value
-if 'action' not in st.session_state:
-    st.session_state.action = actions[0]  # Set a default value
-if 'detail' not in st.session_state:
-    st.session_state.detail = details[0]  # Set a default value
-if 'lighting' not in st.session_state:
-    st.session_state.lighting = lightings[0]  # Set a default value
-if 'theme' not in st.session_state:
-    st.session_state.theme = themes[0]  # Set a default value
-if 'style' not in st.session_state:
-    st.session_state.style = styles[0]  # Set a default value
 
 def randomize():
     st.session_state.subject = random.choice(subjects)
