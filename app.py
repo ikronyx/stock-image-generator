@@ -61,12 +61,7 @@ def generate_prompt():
     prompt += f"Symbolizes {theme}. Style: {style}."
     return prompt
 
-# Buttons
-col_gen, col_rand = st.columns([1, 1])
-generate = col_gen.button("Generate Prompt")
-randomize = col_rand.button("🎲 Randomize")
-
-if randomize:
+def randomize():
     subject = random.choice(subjects)
     location = random.choice(locations)
     action = random.choice(actions)
@@ -75,7 +70,12 @@ if randomize:
     emotion = random.choice(emotions)
     theme = random.choice(themes)
     style = random.choice(styles)
-    # st.experimental_rerun()
+
+# Buttons
+col_gen, col_rand = st.columns([1, 1])
+generate = col_gen.button("Generate Prompt")
+randomize = col_rand.button("🎲 Randomize", on_click=randomize)
+
 
 if generate:
     result = generate_prompt()
