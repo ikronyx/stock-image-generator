@@ -132,17 +132,12 @@ def randomize():
 def click_gen_image():
     st.session_state.bt_gen_image = True
 
-def generate_image(created_prompt):
-    image_url = get_pollinations_url(created_prompt)
-    st.image(image_url)
-
 def generate():
     result = generate_prompt()
     st.text_area("Generated Prompt", result, height=150)
-    st.button("Generate Stock Image", on_click=click_gen_image)
-
-    if st.session_state.get('bt_gen_image'):
-        generate_image(result)
+    
+    image_url = get_pollinations_url(created_prompt)
+    st.image(image_url)
 
 st.button("Randomize", on_click=randomize, use_container_width=True, type='secondary')
 st.button("Generate Prompt", on_click=generate, use_container_width=True, type='primary')
