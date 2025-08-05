@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+from image_utils import get_pollinations_url
 
 st.set_page_config(page_title="Stock Image Prompt Generator", layout="centered")
 
@@ -128,9 +129,17 @@ def randomize():
     st.session_state.theme = random.choice(themes)
     st.session_state.style = random.choice(styles)
 
+image_gen = False
+result = 0
+
 def generate():
     result = generate_prompt()
     st.text_area("Generated Prompt", result, height=150)
+    image_gen = st.button("Generate Stock Image")
 
 st.button("Randomize", on_click=randomize, use_container_width=True, type='secondary')
 st.button("Generate Prompt", on_click=generate, use_container_width=True, type='primary')
+
+if image_gen:
+    image_url = get_pollinations_url(result)
+    st.image(image_url)
