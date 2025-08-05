@@ -1,6 +1,3 @@
-Apologies for the confusion! Here's the `README.md` content in proper Markdown format that you can directly copy-paste into your file:
-
-````markdown
 # Stock Image Prompt Generator
 
 📸 **A Streamlit-based creative prompt generator** for stock photographers, AI artists, and content creators. This tool allows you to easily generate descriptive and emotionally-driven prompts for stock photography and AI art platforms like Adobe Stock, Midjourney, and other image generation tools.
@@ -25,7 +22,6 @@ To get started with this app, you'll need to have Python installed on your syste
    ```bash
    git clone https://github.com/yourusername/stock-image-prompt-generator.git
    cd stock-image-prompt-generator
-````
 
 2. Install the required dependencies:
 
