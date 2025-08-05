@@ -82,7 +82,9 @@ if generate:
     result = generate_prompt()
     st.text_area("📝 Generated Prompt", result, height=150)
 
-
+if 'emotion' not in st.session_state:
+    st.session_state.emotion = emotions[0] # Set a default value
+    
 # Function to be called when the button is clicked
 def randomize_emotion():
     st.session_state.emotion = random.choice(emotions)
