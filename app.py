@@ -133,7 +133,7 @@ def click_gen_image():
     st.session_state.bt_gen_image = True
 
 st.button("Randomize", on_click=randomize, use_container_width=True, type='secondary')
-if st.button("Generate Prompt", on_click=generate, use_container_width=True, type='primary'):
+if st.button("Generate Prompt", use_container_width=True, type='primary'):
     result = generate_prompt()
     st.text_area("Generated Prompt", result, height=150)
 
