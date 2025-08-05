@@ -1,6 +1,7 @@
 import streamlit as st
 import random
 from image_utils import get_pollinations_url
+import time
 
 st.set_page_config(page_title="Stock Image Prompt Generator", layout="centered")
 
@@ -138,6 +139,6 @@ if st.button("Generate Prompt", use_container_width=True, type='primary'):
     st.text_area("Generated Prompt", result, height=150)
 
     with st.spinner("Generating your stock image. Please wait..."):
-        image_url = get_pollinations_url(result)
-    
+        time.sleep(3)
+    image_url = get_pollinations_url(result)
     st.image(image_url)
