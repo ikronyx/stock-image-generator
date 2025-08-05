@@ -140,5 +140,5 @@ if st.button("Generate Prompt", use_container_width=True, type='primary'):
 
     with st.spinner("Generating your stock image. Please wait..."):
         time.sleep(3)
-    image_url = get_pollinations_url(result)
+        image_url = get_pollinations_url(result)
     st.image(image_url)
