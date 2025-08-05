@@ -74,7 +74,7 @@ def randomize():
 # Buttons
 col_gen, col_rand = st.columns([1, 1])
 generate = col_gen.button("Generate Prompt")
-randomize = col_rand.button("🎲 Randomize", on_click=randomize)
+col_rand.button("🎲 Randomize", on_click=randomize)
 
 
 if generate:
