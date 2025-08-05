@@ -97,7 +97,7 @@ def generate_prompt():
     prompt = f"A {subject} in/on/at {location}, "
     if subject not in lifeless_subjects:
         prompt += f"{action}, "
-    prompt += f"surrounded by {detail}. Lighting is {lighting}, with color tones that evoke {emotion}. "
+    prompt += f"surrounded by {detail}. Lighting is {lighting}, with color tones that evoke {st.session_state.emotion}. "
     prompt += f"Symbolizes {theme}. Style: {style}."
     return prompt
 
@@ -130,7 +130,7 @@ def randomize():
 
 def generate():
     result = generate_prompt()
-    st.text_area("Generated Prompt", height=150)
+    st.text_area("Generated Prompt", result, height=150)
 
 st.button("Randomize", on_click=randomize, use_container_width=True, type='secondary')
 st.button("Generate Prompt", on_click=generate, use_container_width=True, type='primary')
