@@ -41,21 +41,56 @@ styles = ['cinematic wide shot', 'soft focus portrait', 'high contrast black and
 col1, col2 = st.columns(2)
 
 with col1:
-    subject = st.selectbox("Subject", subjects)
-    location = st.selectbox("Setting/Location", locations)
-    action = st.selectbox("Action or Pose", actions)
+    subject = st.selectbox(
+                "eubject",
+                subjects,
+                key='subject_selectbox', # Use a different key for the selectbox itself
+                index=subjects.index(st.session_state.subject) # Set the index based on the state value
+            )
+    location = st.selectbox(
+                "location", 
+                locations,
+                key='location_selectbox', 
+                index=locations.index(st.session_state.location)  # Set the index based on the state value
+            )
+    action = st.selectbox(
+                "action", 
+                actions,
+                key='action_selectbox', 
+                index=actions.index(st.session_state.action)  # Set the index based on the state value
+            )
 
 with col2:
-    detail = st.selectbox("Environmental/Emotional Details", details)
-    lighting = st.selectbox("Lighting Description", lightings)
+    detail = st.selectbox(
+                "detail", 
+                details,
+                key='detail_selectbox', 
+                index=details.index(st.session_state.detail)  # Set the index based on the state value
+            )
+    lighting = st.selectbox(
+                "lighting", 
+                lightings,
+                key='lighting_selectbox', 
+                index=lightings.index(st.session_state.lighting)  # Set the index based on the state value
+            )
     emotion = st.selectbox(
-                "Emotion",
+                "emotion",
                 emotions,
                 key='emotion_selectbox', # Use a different key for the selectbox itself
                 index=emotions.index(st.session_state.emotion) # Set the index based on the state value
             )
-    theme = st.selectbox("Theme", themes)
-    style = st.selectbox("Style/Mood/Shot Type", styles)
+    theme = st.selectbox(
+                "theme", 
+                themes,
+                key='theme_selectbox', 
+                index=themes.index(st.session_state.theme)  # Set the index based on the state value
+            )
+    style = st.selectbox(
+                "style", 
+                styles,
+                key='style_selectbox', 
+                index=styles.index(st.session_state.style)  # Set the index based on the state value
+            )
 
 # --- Prompt Generator ---
 def generate_prompt():
@@ -96,19 +131,6 @@ def randomize():
 def generate():
     result = generate_prompt()
     st.text_area("Generated Prompt", height=150)
-# # Buttons
-# col_gen, col_rand = st.columns([1, 1])
-# generate = col_gen.button("Generate Prompt")
-# random_ = col_rand.button("🎲 Randomize",)
 
-# if generate:
-#     result = generate_prompt()
-#     st.text_area("📝 Generated Prompt", result, height=150)
-
-
-# The selectbox, with its value controlled by the session state
-
-
-# The button that triggers the randomization
-st.button("Randomize", on_click=randomize)
-st.button("Generate Prompt", on_click=generate)
+st.button("Randomize", on_click=randomize, use_container_width=True, type='secondary')
+st.button("Generate Prompt", on_click=generate, use_container_width=True, type='primary')
