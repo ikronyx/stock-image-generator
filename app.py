@@ -137,5 +137,7 @@ if st.button("Generate Prompt", use_container_width=True, type='primary'):
     result = generate_prompt()
     st.text_area("Generated Prompt", result, height=150)
 
-    image_url = get_pollinations_url(result)
+    with st.spinner("Generating your stock image. Please wait..."):
+        image_url = get_pollinations_url(result)
+    
     st.image(image_url)
