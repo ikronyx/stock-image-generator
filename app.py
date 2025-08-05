@@ -81,3 +81,22 @@ if col_rand.button("🎲 Randomize"):
 if generate:
     result = generate_prompt()
     st.text_area("📝 Generated Prompt", result, height=150)
+
+
+# Function to be called when the button is clicked
+def randomize_emotion():
+    st.session_state.emotion = random.choice(emotions)
+
+# The selectbox, with its value controlled by the session state
+st.selectbox(
+    "Emotion",
+    emotions,
+    key='emotion_selectbox', # Use a different key for the selectbox itself
+    index=emotions.index(st.session_state.emotion) # Set the index based on the state value
+)
+
+# The button that triggers the randomization
+st.button("Randomize", on_click=randomize_emotion)
+
+# You can display the current value for verification
+st.write("The current emotion is:", st.session_state.emotion)
