@@ -75,7 +75,7 @@ if randomize:
     emotion = random.choice(emotions)
     theme = random.choice(themes)
     style = random.choice(styles)
-    st.experimental_rerun()
+    # st.experimental_rerun()
 
 if generate:
     result = generate_prompt()
