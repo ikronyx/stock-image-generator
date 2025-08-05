@@ -43,7 +43,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     subject = st.selectbox(
-                "eubject",
+                "subject",
                 subjects,
                 key='subject_selectbox', # Use a different key for the selectbox itself
                 index=subjects.index(st.session_state.subject) # Set the index based on the state value
